@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수화 번역기</title>
+    <style>
+        #videoElement{
+            width: 500px;
+            height: 375px;
+            background-color: #666666;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header__logo"></div>
+        <div class="header__menu">
+            <li class="header__menu-item">홈</li>
+            <li class="header__menu-item">장비 테스트</li>
+            <li class="header__menu-item">설명</li>
+        </div>
+    </div>
+    <div class="main">
+        <div class="main__canvas">
+            <video autoplay="true" id="videoElement"></video>
+        </div>
+        <div class="main__translator">
+            <span class="trans__check"></span>
+            <p class="trans__total"></p>
+            <span class="trans__result"></span>
+            <button>OK</button>
+        </div>
+    </div>
+    <div class="footer">
+        
+    </div>
+    <script src="afterResult.js"></script>
+</body>
+</html>
