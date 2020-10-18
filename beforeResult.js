@@ -66,6 +66,7 @@ const canvasHandPoint = (ctx, prediction) => {
         prediction.forEach((predict) => {
             const landmark = predict.landmarks;
             fillHandPoint(ctx, landmark);
+            fillHandLine(ctx, landmark);
         })
     }
 }
@@ -78,6 +79,22 @@ const fillHandPoint = (ctx, landmark) => {
         ctx.beginPath();
         ctx.arc(x, y, 5, 0, 3 * Math.PI);
         ctx.fill();
+    }
+}
+
+const fillHandLine = (ctx, landmark) => {
+    for (const handPoint of Object.keys(fingerPoint)) {
+        for(let i = 0; i < fingerPoint[handPoint].length - 1; i++){
+            console.log(`After handpoint : ${handPoint}`);
+            const firstPoint = fingerPoint[handPoint][i];
+            const secondPoint = fingerPoint[handPoint][i + 1];
+
+            const region = new Path2D();
+            region.moveTo(landmark[firstPoint][0], landmark[firstPoint][1]);
+            region.lineTo(landmark[secondPoint][0], landmark[secondPoint][1]);
+            region.closePath();
+            ctx.stroke(region);
+        }
     }
 }
 

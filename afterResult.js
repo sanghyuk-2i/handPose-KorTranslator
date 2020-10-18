@@ -84,20 +84,18 @@ const fillHandPoint = (ctx, landmark) => {
 }
 
 const fillHandLine = (ctx, landmark) => {
-    let num = 0;
     for (const handPoint of Object.keys(fingerPoint)) {
-        for(let i = 0; i < handPoint.length - 1; i++){
+        for(let i = 0; i < fingerPoint[handPoint].length - 1; i++){
             console.log(`After handpoint : ${handPoint}`);
-            const firstPoint = annotations[handPoint][i];
-            const secondPoint = annotations[handPoint][i + 1];
+            const firstPoint = fingerPoint[handPoint][i];
+            const secondPoint = fingerPoint[handPoint][i + 1];
 
             const region = new Path2D();
-            region.moveTo(landmark[firstPoint], landmark[firstPoint]);
-            region.lineTo(landmark[secondPoint], landmark[secondPoint]);
+            region.moveTo(landmark[firstPoint][0], landmark[firstPoint][1]);
+            region.lineTo(landmark[secondPoint][0], landmark[secondPoint][1]);
             region.closePath();
             ctx.stroke(region);
         }
-        num += 1;
     }
 }
 
